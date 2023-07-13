@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confirmation de rendez-vous</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+    
+    .success-message {
+      font-size: 24px;
+      color: #333;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .success-icon {
+      font-size: 48px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+    .failure-icon {
+      font-size: 48px;
+      color: #FF0000;
+      margin-bottom: 20px;
+    }
+    
+    .failure-message {
+      font-size: 24px;
+      color: #333;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    
+    .appointment-details {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #666;
+    }
+    
+    .button {
+      margin-top: 20px;
+    }
+    
+    .button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .button a:hover {
+      background-color: rgb(190, 86, 131);
+    }
+    
+    .content {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      margin: 150px auto;
+      border-radius: 8px;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div id="paymentStatus"></div>
+  </div>
+
+  <script>
+    // JavaScript code
+    var paymentStatus = 'success'; // Variable pour le statut de paiement (success ou failure)
+    var paymentStatusElement = document.getElementById('paymentStatus');
+
+    if (paymentStatus === 'success') {
+      paymentStatusElement.innerHTML = `
+      <i class="fas fa-check-circle success-icon"></i>
+        <div class="success-message">Payment réussi!!</div>
+        <div class="appointment-details">Votre paiement de 5000FCFA été effectué avec succés </div>
+        <div class="button">
+          <a href="invoice.pdf" target="_blank">Retour</a>
+        </div>
+      `;
+    } else if (paymentStatus === 'failure') {
+      paymentStatusElement.innerHTML = `
+      <i class="fas fa-times-circle failure-icon"></i>
+        <div class="failure-message">Payement échoué!!</div>
+        <div class="appointment-details">Nous sommes désolés, le payement n'a pas été effectué.  </br> Merci de réessayer ultérieurement</div>
+        <div class="button">
+          <a href="/">Retour</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
